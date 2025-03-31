@@ -82,7 +82,7 @@ int main() {
                 printf("Enter element to change: ");
                 scanf("%d", &y);
                 change(position, y);
-                break;
+                break; 
             }
             case 5:
                 display();

@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 5
+#define n 5
 
-int queue[SIZE], front = -1, rear = -1;
+int queue[n], front = -1, rear = -1;
 
 // Enqueue (Insert)
 void enqueue(int value) {
-    if (rear == SIZE - 1) {
+    if (rear == n - 1) {
         printf("Queue is full\n");
         return;
     }

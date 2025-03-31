@@ -1,39 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 5
+#define n 5
 
-int deque[SIZE], front = -1, rear = -1;
+int deque[n], front = -1, rear = -1;
 
 // Enqueue at front
-void enqueue_front(int value) {
-    if ((rear + 1) % SIZE == front) {
+void enqueue_front(int x) {
+    if ((rear + 1) % n == front) {
         printf("Deque is full\n");
         return;
     }
     if (front == -1) {
         front = rear = 0;
     } else {
-        front = (front - 1 + SIZE) % SIZE;
+        front = (front - 1 + n) % n;
     }
-    deque[front] = value;
+    deque[front] = x;
 }
 
-// Enqueue at rear
-void enqueue_rear(int value) {
-    if ((rear + 1) % SIZE == front) {
+// Enqueue at rear (normal)
+void enqueue_rear(int x) {
+    if ((rear + 1) % n == front) {
         printf("Deque is full\n");
         return;
     }
     if (rear == -1) {
         front = rear = 0;
     } else {
-        rear = (rear + 1) % SIZE;
+        rear = (rear + 1) % n;
     }
-    deque[rear] = value;
+    deque[rear] = x;
 }
 
-// Dequeue from front
+// Dequeue from front (normal)
 void dequeue_front() {
     if (front == -1) {
         printf("Deque is empty\n");
@@ -42,7 +42,7 @@ void dequeue_front() {
     if (front == rear) {
         front = rear = -1;
     } else {
-        front = (front + 1) % SIZE;
+        front = (front + 1) % n;
     }
 }
 
@@ -55,7 +55,7 @@ void dequeue_rear() {
     if (front == rear) {
         front = rear = -1;
     } else {
-        rear = (rear - 1 + SIZE) % SIZE;
+        rear = (rear - 1 + n) % n;
     }
 }
 
@@ -69,14 +69,14 @@ void display() {
     while (1) {
         printf("%d ", deque[i]);
         if (i == rear) break;
-        i = (i + 1) % SIZE;
+        i = (i + 1) % n;
     }
     printf("\n");
 }
 
 // Menu
 int main() {
-    int choice, value;
+    int choice, x;
     while (1) {
         printf("\n1. Enqueue Front\n2. Enqueue Rear\n3. Dequeue Front\n4. Dequeue Rear\n5. Display\n6. Exit\n");
         printf("Enter choice: ");
@@ -84,13 +84,13 @@ int main() {
         switch (choice) {
             case 1:
                 printf("Enter value: ");
-                scanf("%d", &value);
-                enqueue_front(value);
+                scanf("%d", &x);
+                enqueue_front(x);
                 break;
             case 2:
                 printf("Enter value: ");
-                scanf("%d", &value);
-                enqueue_rear(value);
+                scanf("%d", &x);
+                enqueue_rear(x);
                 break;
             case 3:
                 dequeue_front();

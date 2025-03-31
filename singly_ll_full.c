@@ -9,17 +9,17 @@ struct node {
 struct node* head = NULL;
 
 // Insert at first
-void insert_first(int value) {
+void insert_first(int x) {
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->data = value;
+    new_node->data = x;
     new_node->next = head;
     head = new_node;
 }
 
 // Insert at last
-void insert_last(int value) {
+void insert_last(int x) {
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->data = value;
+    new_node->data = x;
     new_node->next = NULL;
     if (head == NULL) {
         head = new_node;
@@ -101,7 +101,7 @@ void display() {
 
 // Menu
 int main() {
-    int choice, value, pos;
+    int choice, x, i;
     while (1) {
         printf("\n1. Insert First\n2. Insert Last\n");
         printf("3. Delete First\n4. Delete Last\n5. Delete at Position\n");
@@ -111,13 +111,13 @@ int main() {
         switch (choice) {
             case 1:
                 printf("Enter value: ");
-                scanf("%d", &value);
-                insert_first(value);
+                scanf("%d", &x);
+                insert_first(x);
                 break;
             case 2:
                 printf("Enter value: ");
-                scanf("%d", &value);
-                insert_last(value);
+                scanf("%d", &x);
+                insert_last(x);
                 break;
             case 3:
                 delete_first();
@@ -127,8 +127,8 @@ int main() {
                 break;
             case 5:
                 printf("Enter position: ");
-                scanf("%d", &pos);
-                delete_at_pos(pos);
+                scanf("%d", &i);
+                delete_at_pos(i);
                 break;
             case 6:
                 printf("Total nodes: %d\n", count_nodes());
