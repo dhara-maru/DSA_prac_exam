@@ -25,11 +25,8 @@ void enqueue_rear(int x) {
         printf("Deque is full\n");
         return;
     }
-    if (rear == -1) {
-        front = rear = 0;
-    } else {
-        rear = (rear + 1) % n;
-    }
+    if (rear == -1) front = rear = 0;
+    rear = (rear + 1) % n;
     deque[rear] = x;
 }
 
@@ -65,14 +62,13 @@ void display() {
         printf("Deque is empty\n");
         return;
     }
-    int i = front;
-    while (1) {
+    for (int i = front; ; i = (i + 1) % n) {
         printf("%d ", deque[i]);
         if (i == rear) break;
-        i = (i + 1) % n;
     }
     printf("\n");
 }
+
 
 // Menu
 int main() {

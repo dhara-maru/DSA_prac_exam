@@ -35,11 +35,9 @@ void display() {
         printf("Queue is empty\n");
         return;
     }
-    int i = front;
-    while (1) {
+    for (int i = front; ; i = (i + 1) % n) {
         printf("%d ", queue[i]);
         if (i == rear) break;
-        i = (i + 1) % n;
     }
     printf("\n");
 }
